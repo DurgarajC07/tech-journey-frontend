@@ -20,7 +20,7 @@ interface Milestone {
   date: string;
   company: string | null;
   location: string | null;
-  tags: string[];
+  tags?: string[]; // Optional since it's not in database
 }
 
 interface GroupedMilestones {
@@ -44,7 +44,7 @@ export default function TimelinePage() {
   const fetchMilestones = async () => {
     setIsLoading(true);
     try {
-      const response = await apiClient.get('/timeline/milestones');
+      const response = await apiClient.get('/timeline');
       // Backend returns { success, data: [...milestones] }
       setMilestones(response.data || []);
     } catch (error) {
@@ -237,7 +237,7 @@ export default function TimelinePage() {
                           </span>
                         </div>
 
-                        {milestone.tags.length > 0 && (
+                        {milestone.tags && milestone.tags.length > 0 && (
                           <div className="flex flex-wrap gap-2">
                             {milestone.tags.map((tag) => (
                               <Badge key={tag} variant="secondary" className="text-xs">

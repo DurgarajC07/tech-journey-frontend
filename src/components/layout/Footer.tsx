@@ -11,23 +11,26 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600" />
-              <span className="text-xl font-bold text-gray-900 dark:text-white">TechJourney</span>
+              <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+                DC
+              </div>
+              <span className="text-xl font-bold text-gray-900 dark:text-white">Durgaraj Chauhan</span>
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-400 max-w-sm">
-              A full-stack developer's portfolio showcasing projects, blog posts, and continuous learning journey in software development.
+              AI & Full-Stack Developer with 2+ years of experience in AI technologies, building scalable web/cloud solutions, 
+              and AI-driven automation.
             </p>
             <div className="flex space-x-4 mt-4">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400">
+              <a href="https://github.com/DurgarajC07" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400">
                 <Github className="h-5 w-5" />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400">
+              <a href="https://linkedin.com/in/durgaraj-chauhan" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400">
+              <a href="https://twitter.com/DurgarajChauhan" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="mailto:contact@example.com" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400">
+              <a href="mailto:durgarajchauhan@gmail.com" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400">
                 <Mail className="h-5 w-5" />
               </a>
             </div>
@@ -57,7 +60,7 @@ export default function Footer() {
 
         <div className="mt-8 border-t pt-8 text-center">
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            © {currentYear} TechJourney. Built with Next.js, TypeScript, and Tailwind CSS.
+            © {currentYear} Durgaraj Chauhan. Built with Next.js, React, TypeScript, and Tailwind CSS.
           </p>
         </div>
       </div>

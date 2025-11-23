@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { use, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -21,7 +21,8 @@ const skillSchema = z.object({
 
 type SkillFormData = z.infer<typeof skillSchema>;
 
-export default function EditSkillPage({ params }: { params: { id: string } }) {
+export default function EditSkillPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = use(params);
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -37,12 +38,12 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
 
   useEffect(() => {
     fetchSkill();
-  }, [params.id]);
+  }, [resolvedParams.id]);
 
   const fetchSkill = async () => {
     setIsLoading(true);
     try {
-      const response: any = await apiClient.get(`/skills/${params.id}`);
+      const response: any = await apiClient.get(`/skills/id/${resolvedParams.id}`);
       // Backend returns { success, data: skill, message }
       const skill = response.data;
       setValue('name', skill.name);
@@ -61,7 +62,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
   const onSubmit = async (data: SkillFormData) => {
     setIsSubmitting(true);
     try {
-      await apiClient.put(`/skills/${params.id}`, data);
+      await apiClient.put(`/skills/${resolvedParams.id}`, data);
       router.push('/dashboard/skills');
     } catch (error: any) {
       console.error('Failed to update skill:', error);

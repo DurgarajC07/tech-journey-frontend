@@ -52,7 +52,7 @@ export default function DashboardPage() {
       setRecentPosts(postsResponse.data || []);
 
       // Fetch recent comments - Paginated response with { data, meta }
-      const commentsResponse: any = await apiClient.get('/comments?pageSize=5');
+      const commentsResponse: any = await apiClient.get('/comments/all?pageSize=5');
       setRecentComments(commentsResponse.data || []);
     } catch (error) {
       console.error('Failed to fetch dashboard data:', error);
@@ -131,7 +131,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-7xl">
       {/* Header */}
       <div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Dashboard</h1>

@@ -10,14 +10,14 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-              Full-Stack Developer
+              Durgaraj Chauhan
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                Building Digital Experiences
+                AI & Full-Stack Developer
               </span>
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Welcome to my tech journey. I build modern web applications, share knowledge through blog posts,
-              and continuously learn new technologies.
+              2+ years of experience in AI technologies (Claude AI, LLMs, Generative AI) and building scalable 
+              web/cloud solutions. Proficient in React, Node.js, Python, and Docker with a focus on AI-driven automation.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link href="/projects">
@@ -51,10 +51,10 @@ export default function HomePage() {
                 <Code className="h-6 w-6 text-blue-600 dark:text-blue-400" />
               </div>
               <h3 className="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                Full-Stack Development
+                AI & Full-Stack Development
               </h3>
               <p className="mt-2 text-gray-600 dark:text-gray-300">
-                Building scalable web applications with modern technologies like React, Next.js, Node.js, and TypeScript.
+                Building AI-powered chatbots, call bots, and scalable web applications using React, Node.js, Python (Flask/FastAPI), and Docker.
               </p>
             </div>
 
@@ -63,10 +63,10 @@ export default function HomePage() {
                 <BookOpen className="h-6 w-6 text-purple-600 dark:text-purple-400" />
               </div>
               <h3 className="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                Technical Writing
+                AI-Driven Automation
               </h3>
               <p className="mt-2 text-gray-600 dark:text-gray-300">
-                Sharing knowledge through in-depth blog posts about web development, best practices, and new technologies.
+                Implementing LLM-driven solutions, agentic workflows, and VLMs for processing documents with Claude AI and Generative AI.
               </p>
             </div>
 
@@ -75,10 +75,10 @@ export default function HomePage() {
                 <Rocket className="h-6 w-6 text-green-600 dark:text-green-400" />
               </div>
               <h3 className="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                Continuous Learning
+                Cloud & DevOps
               </h3>
               <p className="mt-2 text-gray-600 dark:text-gray-300">
-                Always exploring new frameworks, tools, and methodologies to stay at the forefront of technology.
+                Deploying production-ready applications with Docker, AWS, Azure, and implementing RESTful APIs with WebSockets.
               </p>
             </div>
           </div>

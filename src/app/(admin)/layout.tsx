@@ -52,10 +52,10 @@ export default function AdminLayout({
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="flex">
+      <div className="flex min-h-[calc(100vh-4rem)]">
         {/* Sidebar */}
-        <aside className="hidden lg:flex lg:flex-col lg:w-64 lg:fixed lg:inset-y-0 lg:border-r lg:border-gray-200 dark:lg:border-gray-700 lg:bg-white dark:lg:bg-gray-800 lg:pt-20">
-          <nav className="flex-1 space-y-1 px-2 py-4">
+        <aside className="hidden lg:flex lg:flex-col lg:w-64 lg:fixed lg:inset-y-0 lg:border-r lg:border-gray-200 dark:lg:border-gray-700 lg:bg-white dark:lg:bg-gray-800 lg:pt-20 lg:z-10">
+          <nav className="flex-1 space-y-1 px-2 py-4 overflow-y-auto pb-24">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -70,8 +70,10 @@ export default function AdminLayout({
         </aside>
 
         {/* Main content */}
-        <main className="flex-1 lg:pl-64">
-          {children}
+        <main className="flex-1 lg:pl-64 pb-4">
+          <div className="p-6 lg:p-8 min-h-[calc(100vh-8rem)]">
+            {children}
+          </div>
         </main>
       </div>
     </div>

@@ -95,34 +95,49 @@ export default function AboutPage() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <div className="inline-flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-purple-600 text-white text-5xl font-bold mb-6">
-            <Code className="h-16 w-16" />
+            DC
           </div>
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            About Me
+            Durgaraj Chauhan
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            I'm a passionate full-stack developer dedicated to creating elegant solutions to complex problems.
-            With expertise in modern web technologies, I build scalable applications that deliver exceptional user experiences.
+            AI & Full-Stack Developer | Sr. Software Engineer
+          </p>
+          <p className="text-lg text-gray-500 dark:text-gray-400 mt-4">
+            2+ years of experience in AI technologies (Claude AI, LLMs, Generative AI) and building scalable web/cloud solutions
           </p>
         </div>
 
         {/* Bio Section */}
         <Card className="p-8 mb-12">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            My Story
+            About Me
           </h2>
           <div className="prose prose-lg dark:prose-invert max-w-none">
             <p className="text-gray-600 dark:text-gray-300 mb-4">
-              My journey in software development began several years ago, driven by curiosity and a passion for problem-solving.
-              I started with basic HTML and CSS, and quickly fell in love with the endless possibilities of web development.
+              Hi! I'm Durgaraj Chauhan, a Technical Professional and AI & Full-Stack Developer with over 2+ years of experience 
+              specializing in AI technologies including Claude AI, LLMs (Large Language Models), and Generative AI. I'm currently 
+              working as a Senior Software Engineer at Anvex AI Technologies in Navi Mumbai, where I build cutting-edge AI-powered 
+              solutions.
             </p>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
-              Over the years, I've worked on diverse projects ranging from e-commerce platforms to complex enterprise applications.
-              I specialize in JavaScript/TypeScript ecosystem, particularly React, Next.js, Node.js, and modern database technologies.
+              I graduated with a Bachelor of Engineering from Saraswati College of Engineering, Kharghar (2020-2023) with 78.34%, 
+              and completed my Diploma from Saraswati Institute of Technology, Kharghar (2017-2020) with an impressive 90.91%. 
+              My technical expertise spans across React.js, Node.js, Python (Flask & FastAPI), Docker, and cloud platforms like 
+              AWS and Azure.
+            </p>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              At Anvex AI Technologies, I've built AI-powered chatbots and call bots using VAPI + Redis, implemented LLM-driven 
+              context retention for seamless call-to-chat switching, and designed agentic workflows for automating repetitive tasks. 
+              I've also integrated Vision-Language Models (VLMs) for processing invoices and bank statements. Previously, at Reboot 
+              Technology Pvt LTD (2023-2025), I developed screen recorder extensions, QR-based check-in systems, and integrated 
+              various APIs including Twilio, Stripe/Razorpay, and DocuSign.
             </p>
             <p className="text-gray-600 dark:text-gray-300">
-              When I'm not coding, you'll find me writing technical blog posts, contributing to open-source projects,
-              or exploring new technologies to stay at the forefront of web development.
+              My passion lies in AI-driven automation, building production-ready applications, and performance optimization. I've 
+              worked on diverse projects including an AI Chatbot & Callbot System, Insurance Damage Estimation Website using Computer 
+              Vision, NFT Marketplace using Blockchain, and a comprehensive Content Management System. When I'm not coding, I enjoy 
+              playing cricket, listening to music, travelling, and watching anime.
             </p>
           </div>
         </Card>
@@ -190,24 +205,33 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-4">
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:durgarajchauhan@gmail.com"
                 className="flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 <Mail className="h-5 w-5" />
-                your.email@example.com
+                durgarajchauhan@gmail.com
+              </a>
+              <a
+                href="tel:+918268874907"
+                className="flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                +91 8268874907
               </a>
               <div className="flex items-center gap-3 text-gray-600 dark:text-gray-300">
                 <MapPin className="h-5 w-5" />
-                San Francisco, CA
+                Mumbai, Maharashtra, India
               </div>
               <a
-                href="https://yourwebsite.com"
+                href="https://durgarajchauhan.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 <LinkIcon className="h-5 w-5" />
-                yourwebsite.com
+                durgarajchauhan.vercel.app
               </a>
             </div>
 
@@ -217,7 +241,7 @@ export default function AboutPage() {
               </h3>
               <div className="flex gap-4">
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/DurgarajChauhan"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="h-10 w-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-blue-600 hover:text-white transition-all"
@@ -225,7 +249,7 @@ export default function AboutPage() {
                   <Github className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://linkedin.com/in/durgaraj-chauhan"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="h-10 w-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-blue-600 hover:text-white transition-all"
@@ -233,7 +257,7 @@ export default function AboutPage() {
                   <Linkedin className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://twitter.com/yourusername"
+                  href="https://twitter.com/DurgarajChauhan"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="h-10 w-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-blue-600 hover:text-white transition-all"

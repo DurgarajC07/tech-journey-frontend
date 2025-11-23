@@ -27,8 +27,10 @@ export default function Header() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
-          <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600" />
-          <span className="text-xl font-bold text-gray-900 dark:text-white">TechJourney</span>
+          <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+            DC
+          </div>
+          <span className="text-xl font-bold text-gray-900 dark:text-white">Durgaraj Chauhan</span>
         </Link>
 
         {/* Desktop Navigation */}

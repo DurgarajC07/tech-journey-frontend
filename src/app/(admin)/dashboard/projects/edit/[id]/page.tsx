@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { use, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -30,7 +30,8 @@ const projectSchema = z.object({
 
 type ProjectFormData = z.infer<typeof projectSchema>;
 
-export default function EditProjectPage({ params }: { params: { id: string } }) {
+export default function EditProjectPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = use(params);
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -46,12 +47,12 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
 
   useEffect(() => {
     fetchProject();
-  }, [params.id]);
+  }, [resolvedParams.id]);
 
   const fetchProject = async () => {
     setIsLoading(true);
     try {
-      const response: any = await apiClient.get(`/projects/${params.id}`);
+      const response: any = await apiClient.get(`/projects/id/${resolvedParams.id}`);
       // Backend returns { success, data: project, message }
       const project = response.data;
       setValue('title', project.title);
@@ -91,7 +92,7 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
         learnings: data.learnings || null,
       };
 
-      await apiClient.put(`/projects/${params.id}`, projectData);
+      await apiClient.put(`/projects/${resolvedParams.id}`, projectData);
       router.push('/dashboard/projects');
     } catch (error: any) {
       console.error('Failed to update project:', error);

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { use, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -23,7 +23,8 @@ const learningSchema = z.object({
 
 type LearningFormData = z.infer<typeof learningSchema>;
 
-export default function EditLearningPage({ params }: { params: { id: string } }) {
+export default function EditLearningPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = use(params);
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -39,12 +40,12 @@ export default function EditLearningPage({ params }: { params: { id: string } })
 
   useEffect(() => {
     fetchItem();
-  }, [params.id]);
+  }, [resolvedParams.id]);
 
   const fetchItem = async () => {
     setIsLoading(true);
     try {
-      const response: any = await apiClient.get(`/learning/${params.id}`);
+      const response: any = await apiClient.get(`/learning/id/${resolvedParams.id}`);
       // Backend returns { success, data: item, message }
       const item = response.data;
       setValue('title', item.title);
@@ -70,7 +71,7 @@ export default function EditLearningPage({ params }: { params: { id: string } })
         resourceUrl: data.resourceUrl || null,
       };
 
-      await apiClient.put(`/learning/${params.id}`, learningData);
+      await apiClient.put(`/learning/${resolvedParams.id}`, learningData);
       router.push('/dashboard/learning');
     } catch (error: any) {
       console.error('Failed to update learning item:', error);

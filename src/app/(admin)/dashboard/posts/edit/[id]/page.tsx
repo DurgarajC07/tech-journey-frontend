@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { use, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -24,7 +24,8 @@ const postSchema = z.object({
 
 type PostFormData = z.infer<typeof postSchema>;
 
-export default function EditPostPage({ params }: { params: { id: string } }) {
+export default function EditPostPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = use(params);
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -40,12 +41,12 @@ export default function EditPostPage({ params }: { params: { id: string } }) {
 
   useEffect(() => {
     fetchPost();
-  }, [params.id]);
+  }, [resolvedParams.id]);
 
   const fetchPost = async () => {
     setIsLoading(true);
     try {
-      const response: any = await apiClient.get(`/posts/${params.id}`);
+      const response: any = await apiClient.get(`/posts/id/${resolvedParams.id}`);
       // Backend returns { success, data: post, message }
       const post = response.data;
       setValue('title', post.title);
@@ -73,7 +74,7 @@ export default function EditPostPage({ params }: { params: { id: string } }) {
         coverImage: data.coverImage || null,
       };
 
-      await apiClient.put(`/posts/${params.id}`, postData);
+      await apiClient.put(`/posts/${resolvedParams.id}`, postData);
       router.push('/dashboard/posts');
     } catch (error: any) {
       console.error('Failed to update post:', error);

@@ -20,7 +20,6 @@ const timelineSchema = z.object({
   endDate: z.string().optional().or(z.literal('')),
   company: z.string().optional(),
   location: z.string().optional(),
-  tags: z.string().optional(),
 });
 
 type TimelineFormData = z.infer<typeof timelineSchema>;
@@ -48,7 +47,6 @@ export default function CreateTimelinePage() {
         endDate: data.endDate || null,
         company: data.company || null,
         location: data.location || null,
-        tags: data.tags ? data.tags.split(',').map((tag) => tag.trim()).filter(Boolean) : [],
       };
 
       await apiClient.post('/timeline', timelineData);
@@ -161,16 +159,6 @@ export default function CreateTimelinePage() {
                 <Input
                   {...register('location')}
                   placeholder="San Francisco, CA"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Tags (comma-separated)
-                </label>
-                <Input
-                  {...register('tags')}
-                  placeholder="leadership, microservices, nodejs"
                 />
               </div>
             </div>

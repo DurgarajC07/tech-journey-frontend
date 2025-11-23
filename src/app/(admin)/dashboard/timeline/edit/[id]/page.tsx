@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { use, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -20,12 +20,12 @@ const timelineSchema = z.object({
   endDate: z.string().optional().or(z.literal('')),
   company: z.string().optional(),
   location: z.string().optional(),
-  tags: z.string().optional(),
 });
 
 type TimelineFormData = z.infer<typeof timelineSchema>;
 
-export default function EditTimelinePage({ params }: { params: { id: string } }) {
+export default function EditTimelinePage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = use(params);
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -41,12 +41,12 @@ export default function EditTimelinePage({ params }: { params: { id: string } })
 
   useEffect(() => {
     fetchMilestone();
-  }, [params.id]);
+  }, [resolvedParams.id]);
 
   const fetchMilestone = async () => {
     setIsLoading(true);
     try {
-      const response: any = await apiClient.get(`/timeline/${params.id}`);
+      const response: any = await apiClient.get(`/timeline/id/${resolvedParams.id}`);
       // Backend returns { success, data: milestone, message }
       const milestone = response.data;
       setValue('title', milestone.title);
@@ -56,7 +56,6 @@ export default function EditTimelinePage({ params }: { params: { id: string } })
       setValue('endDate', milestone.endDate ? milestone.endDate.split('T')[0] : '');
       setValue('company', milestone.company || '');
       setValue('location', milestone.location || '');
-      setValue('tags', milestone.tags?.join(', ') || '');
     } catch (error) {
       console.error('Failed to fetch milestone:', error);
       alert('Failed to load milestone');
@@ -74,10 +73,9 @@ export default function EditTimelinePage({ params }: { params: { id: string } })
         endDate: data.endDate || null,
         company: data.company || null,
         location: data.location || null,
-        tags: data.tags ? data.tags.split(',').map((tag) => tag.trim()).filter(Boolean) : [],
       };
 
-      await apiClient.put(`/timeline/${params.id}`, timelineData);
+      await apiClient.put(`/timeline/${resolvedParams.id}`, timelineData);
       router.push('/dashboard/timeline');
     } catch (error: any) {
       console.error('Failed to update milestone:', error);
@@ -191,13 +189,6 @@ export default function EditTimelinePage({ params }: { params: { id: string } })
                   Location
                 </label>
                 <Input {...register('location')} />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Tags (comma-separated)
-                </label>
-                <Input {...register('tags')} />
               </div>
             </div>
           </Card>
