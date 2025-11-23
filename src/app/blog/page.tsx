@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import apiClient from '@/lib/api/client';
@@ -40,7 +40,7 @@ interface PaginationData {
   totalPages: number;
 }
 
-export default function BlogPage() {
+function BlogContent() {
   const searchParams = useSearchParams();
   const [posts, setPosts] = useState<Post[]>([]);
   const [pagination, setPagination] = useState<PaginationData | null>(null);
@@ -261,5 +261,22 @@ export default function BlogPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function BlogPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-[calc(100vh-4rem)] bg-gray-50 dark:bg-gray-900 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Blog</h1>
+            <p className="text-lg text-gray-600 dark:text-gray-300">Loading...</p>
+          </div>
+        </div>
+      </div>
+    }>
+      <BlogContent />
+    </Suspense>
   );
 }
